@@ -1,6 +1,4 @@
-* {
-	box-sizing: border-box;
-}
+
 body {
 	width: 100%;
 	margin: 0;
@@ -8,7 +6,8 @@ body {
 }
 
 #header {
-	background-color: #A0F3E6;
+	background-color: #31D3D7;
+	border-bottom: 3px solid #175D5E;
 	width: 100%;
 	height: 250px;
 	margin: 0;
@@ -25,6 +24,8 @@ body {
 	align-items: center;
 }
 #header h1 {
+	color: white;
+	text-shadow: 3px 3px black;
 	font-size: 80px;
 	margin-left: 0;
 	margin-right: 0;
@@ -37,11 +38,14 @@ body {
 
 #main-container {
 	width: 100%;
+	background-color: #A0F3E6;
+	height: 110vh;
+	padding-top: 50px;
 }
 
 #card {
 	width: 80%;
-	margin-top: 50px;
+	
 	margin-right: auto;
 	margin-left: auto;
 	border: 1px solid #ccc;
@@ -60,7 +64,7 @@ body {
 	padding: 15px;
 	background-color: white;
 }
-#card button{
+#add-button{
 	color: white;
 	background-color: #404342;
 	border: 1px solid black;
@@ -98,5 +102,10 @@ li:nth-child(odd) {
 li:nth-child(even) {
   background-color: #ccc;
 }
-
-
+li button{
+	float: right;
+	color: red;
+	background-color: #404342;
+	border: 1px solid black;
+	border-radius: 3px;
+}

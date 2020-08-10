@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html>S
 <head>
 	<title>Item Lister</title>
 	<link href="https://fonts.googleapis.com/css2?family=Livvic&family=Mulish&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
   	    <form name="list-of-items">
   	      <input type="text" id="add" placeholder="Item">
   	      <input type="text" id="amount" placeholder="Quantity">
-  		  <button onclick="addItem()">Add</button>
+  		  <button id="add-button" onclick="addItem()">Add</button>
   	    </form>
   	  </div>
   	  <div id="list-container">
@@ -37,6 +37,9 @@
   	  var amount = document.getElementById('amount').value;
   	  console.log(newItem);
   	  var newListItem = document.createElement('li');
+      var removeButton = document.createElement('button');
+      var remove = document.createTextNode("Remove");
+      removeButton.appendChild(remove);
   	  var newListText = document.createTextNode(newItem + " x " + amount);
   	  if ((newItem == "") || (amount == "")) {
   	  	alert("Please enter an item + quantity to add to list")
@@ -44,10 +47,16 @@
   	  newListItem.appendChild(newListText);
   	  var ol = document.querySelector('ol');
   	  ol.appendChild(newListItem);
-  	  console.log(ol.children);
+      newListItem.appendChild(removeButton);
+      removeButton.addEventListener("click", removeFromList);
   	  newItem = null;}
   	  document.forms['list-of-items'].reset()
   	}
+    function removeFromList() {
+      var itemToGo = this.parentNode;
+      console.log(itemToGo);
+      itemToGo.parentNode.removeChild(itemToGo);
+       }
   </script>
 </body>
 </html>
