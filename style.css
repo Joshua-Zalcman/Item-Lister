@@ -45,7 +45,7 @@ body {
 
 #card {
 	width: 80%;
-	
+
 	margin-right: auto;
 	margin-left: auto;
 	border: 1px solid #ccc;
@@ -57,7 +57,16 @@ body {
 	align-content: flex-start;
 }
 
-#card div{
+#form-container{
+	margin: 15px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 15px;
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+}
+#list-container{
 	margin: 15px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
@@ -65,6 +74,12 @@ body {
 	background-color: white;
 }
 #add-button{
+	color: white;
+	background-color: #404342;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+#search-button{
 	color: white;
 	background-color: #404342;
 	border: 1px solid black;

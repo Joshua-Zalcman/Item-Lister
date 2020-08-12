@@ -15,12 +15,20 @@
   <div id="main-container">
   	<div id="card">
       <div id="form-container">
-      	<h2>Add Items</h2>
-  	    <form name="list-of-items">
-  	      <input type="text" id="add" placeholder="Item">
-  	      <input type="text" id="amount" placeholder="Quantity">
-  		  <button id="add-button" onclick="addItem()">Add</button>
-  	    </form>
+        <div id="add-items">
+      	  <h2>Add Items</h2>
+  	      <form name="list-of-items">
+  	        <input type="text" id="add" placeholder="Item">
+  	        <input type="text" id="amount" placeholder="Quantity">
+  		      <button id="add-button">Add</button>
+  	      </form>
+        </div>
+        <div id="search">
+          <h2>Search</h2>
+          <!--look for magnifying glass icon-->
+          <input type="text" id="item-search" placeholder="Search">
+          <button id="search-button">Search</button>
+        </div>
   	  </div>
   	  <div id="list-container">
   	  	<h2>Items List</h2>
@@ -31,32 +39,61 @@
     </div>
   </div>
   <script type="text/javascript">
+    document.getElementById("add-button").addEventListener('click',addItem);
+    document.getElementById("search-button").addEventListener('click',searchList);
+    var ol = document.querySelector('ol');
+    //add items to list
   	function addItem() {
   	  event.preventDefault();
   	  var newItem = document.getElementById('add').value;
   	  var amount = document.getElementById('amount').value;
-  	  console.log(newItem);
+      //create new list item
   	  var newListItem = document.createElement('li');
+      //creat button for new list item
       var removeButton = document.createElement('button');
-      var remove = document.createTextNode("Remove");
-      removeButton.appendChild(remove);
-  	  var newListText = document.createTextNode(newItem + " x " + amount);
+      //add text node to new button
+      removeButton.appendChild(document.createTextNode("Remove"));
   	  if ((newItem == "") || (amount == "")) {
   	  	alert("Please enter an item + quantity to add to list")
   	  } else {
-  	  newListItem.appendChild(newListText);
-  	  var ol = document.querySelector('ol');
+        //add text node to new list item
+  	  newListItem.appendChild(document.createTextNode(newItem + " x " + amount));
+      //add new list item as a child of organized list
   	  ol.appendChild(newListItem);
+      //add new button item as a child of new list item
       newListItem.appendChild(removeButton);
+      //add event listener to new button
       removeButton.addEventListener("click", removeFromList);
   	  newItem = null;}
-  	  document.forms['list-of-items'].reset()
+      //reset input value fields
+  	  document.forms['list-of-items'].reset();
+      //refocus input "add" field
+      document.getElementById("add").focus();
   	}
+    //remove item from list
     function removeFromList() {
       var itemToGo = this.parentNode;
       console.log(itemToGo);
       itemToGo.parentNode.removeChild(itemToGo);
-       }
+     }
+     //search for items in list
+     function searchList(){
+      event.preventDefault();
+      var find = document.getElementById("item-search").value;
+      //convert to lower case
+      var text = find.toLowerCase();
+      var searchThese = ol.getElementsByTagName('li');
+      //console.log(searchThese);
+      Array.from(searchThese).forEach(function(a){
+        var itemName = a.firstChild.textContent;
+        //console.log(itemName);
+        if (itemName.toLowerCase().indexOf(text) != -1){
+          a.style.display = 'block';
+        } else {
+          a.style.display = 'none';
+        }
+      });
+     }
   </script>
 </body>
 </html>
